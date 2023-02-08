@@ -104,6 +104,31 @@ def func_2(rho_2, rho_1, k, L, g_1, R_n, l, tilt_delta, a):
     return dI
 
 
+def beam_rayleigh(w0, lmbda):
+    z_r = np.pi * w0**2 / lmbda
+    ans = 'Beam Rayleigh length is: ' + str(np.round(z_r*1e2, 2)) + ' cm'
+    return ans
+
+
+def beam_waist_at_z(z, w0, lmbda):
+    z_r = np.pi * w0**2 / lmbda
+    w = w0 * np.sqrt(1 + (z / z_r)**2)
+    ans = 'Beam waist at z = ' + str(z*1e2) + ' cm is: ' + str(np.round(w*1e6, 2)) + ' um'
+    return ans
+
+
+def beam_waist_after_lens(f, w0, lmbda):
+    f = f*1e-3
+    w = lmbda * f / np.pi / w0
+    ans = 'Beam waist after lens is: ' + str(np.round(w*1e6,2)) + ' um' 
+    return ans
+
+
+def lens_focal_dist(w, w0, lmbda):
+    f = w * w0 * np.pi / lmbda
+    ans = 'Lens focal dist is: ' + str(np.round(f*1e3,2)) + ' mm' 
+    return ans
+
 ### OLD FUNCTION FOR LOSSES CALCULATIONS ###
 
 # def calc_old():
